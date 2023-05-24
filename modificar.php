@@ -3,6 +3,8 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $no_cuenta = $_POST['no_cuenta'];
+    $nuevo_telefono = $_POST['nuevo_telefono'];
+    $nuevo_correo = $_POST['nuevo_correo'];
 
     $servidor = 'localhost';
     $usuario = 'annie';
@@ -11,14 +13,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $connection = mysqli_connect($servidor, $usuario, $clave, $BD);
 
-    $consulta = "DELETE FROM alumnos WHERE no_cuenta = '$no_cuenta'";
+    if (!empty($nuevo_telefono) && !empty($nuevo_correo)) {
+        $consulta = "UPDATE alumnos SET telefono = '$nuevo_telefono', correo = '$nuevo_correo' WHERE no_cuenta = '$no_cuenta'";
+    } elseif (!empty($nuevo_telefono)) {
+        $consulta = "UPDATE alumnos SET telefono = '$nuevo_telefono' WHERE no_cuenta = '$no_cuenta'";
+    } elseif (!empty($nuevo_correo)) {
+        $consulta = "UPDATE alumnos SET correo = '$nuevo_correo' WHERE no_cuenta = '$no_cuenta'";
+    } else {
+        echo "No se especificaron campos para modificar.";
+        exit;
+    }
+
     $resultado = mysqli_query($connection, $consulta);
 
     if ($resultado) {
-        echo "Registro eliminado correctamente.";
+        echo "Registro modificado correctamente. <br>";
         echo '<a href="template.php">Volver a la página</a>';
     } else {
-        echo "Error al eliminar el registro.";
+        echo "Error al modificar el registro.";
     }
 
     mysqli_close($connection);
