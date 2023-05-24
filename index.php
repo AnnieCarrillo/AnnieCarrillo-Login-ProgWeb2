@@ -1,0 +1,35 @@
+<?php
+session_start();
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <div class="login-box"> 
+        <img class="avatar" src="img/logofes.jpg" alt="">
+        <h1>Login para estudiantes de la Fes Aragon</h1>
+        <form action="conexion.php" method="post">
+            <label for="username">Usuario del alumno:</label>
+            <input type="text" placeholder="Ingrese Nombre de Usuario" name="nombre_usuario">
+
+            <label for="Contraseña">Contraseña:</label>
+            <input type="password" placeholder="Ingrese Contraseña" name="contraseña">
+        
+            <input type="Submit" value="Log In">   
+
+        </form>
+
+
+    </div>
+
+</body>
+</html>
