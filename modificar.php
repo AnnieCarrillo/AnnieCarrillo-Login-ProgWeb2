@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($resultado) {
         echo "Registro modificado correctamente. <br>";
-        echo '<a href="template.php">Volver a la página</a>';
+        echo '<a href="template.php">Volver a la página principal</a>';
     } else {
         echo "Error al modificar el registro.";
     }

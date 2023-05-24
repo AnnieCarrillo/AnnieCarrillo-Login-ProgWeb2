@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($resultado) {
         echo "Registro eliminado correctamente.";
-        echo '<a href="template.php">Volver a la página</a>';
+        echo '<a href="index.php">Volver a la página principal</a>';
     } else {
         echo "Error al eliminar el registro.";
     }
